@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -17,6 +18,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:"Inter",sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -28,20 +30,82 @@ overflow-x:hidden;
 .container{
 max-width:1200px;
 margin:auto;
-padding:80px 20px;
+padding:100px 20px;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(15,23,42,0.7);
+backdrop-filter:blur(20px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+z-index:999;
+}
+
+.logo{
+font-weight:700;
+font-size:20px;
+}
+
+.nav-links{
+display:flex;
+align-items:center;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+opacity:.8;
+}
+
+.nav-links a:hover{
+opacity:1;
+}
+
+.lang-switch{
+margin-left:25px;
+cursor:pointer;
+padding:6px 12px;
+background:#22c55e;
+border:none;
+border-radius:6px;
+color:white;
+font-weight:600;
 }
 
 /* HERO */
 
 .hero{
 text-align:center;
-padding:140px 20px;
+padding:180px 20px 120px;
 background:radial-gradient(circle at top,#2563eb,#0f172a);
+position:relative;
+overflow:hidden;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+background:#22c55e;
+filter:blur(200px);
+opacity:0.25;
+top:-250px;
+left:50%;
+transform:translateX(-50%);
+z-index:-1;
 }
 
 .hero h1{
 font-size:64px;
-font-weight:700;
 margin-bottom:20px;
 }
 
@@ -64,29 +128,36 @@ transition:.3s;
 }
 
 .button:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 25px rgba(0,0,0,.3);
+transform:translateY(-3px);
+box-shadow:0 15px 30px rgba(0,0,0,.4);
 }
 
-/* APP ICON */
+/* ICON */
 
 .app-icon{
 width:140px;
-border-radius:26px;
+border-radius:28px;
+margin-top:60px;
 transition:.3s;
 }
 
 .app-icon:hover{
 transform:scale(1.08);
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
+box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
 
-/* PHONE MOCKUP */
+/* FLOAT */
+
+@keyframes float{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-18px)}
+100%{transform:translateY(0px)}
+}
 
 .phone{
-margin-top:80px;
 display:flex;
 justify-content:center;
+margin-top:80px;
 }
 
 .phone img{
@@ -96,18 +167,12 @@ box-shadow:0 40px 120px rgba(0,0,0,.6);
 animation:float 6s ease-in-out infinite;
 }
 
-@keyframes float{
-0%{transform:translateY(0px)}
-50%{transform:translateY(-20px)}
-100%{transform:translateY(0px)}
-}
-
 /* FEATURES */
 
 .section-title{
 text-align:center;
 font-size:36px;
-margin-bottom:60px;
+margin-bottom:70px;
 }
 
 .features{
@@ -121,11 +186,18 @@ background:rgba(255,255,255,0.05);
 backdrop-filter:blur(15px);
 padding:30px;
 border-radius:20px;
-transition:.3s;
+transition:.4s;
+opacity:0;
+transform:translateY(40px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 background:rgba(255,255,255,0.08);
 }
 
@@ -142,11 +214,7 @@ flex-wrap:wrap;
 width:240px;
 border-radius:24px;
 box-shadow:0 20px 60px rgba(0,0,0,.4);
-transition:.3s;
-}
-
-.screens img:hover{
-transform:scale(1.05);
+animation:float 7s ease-in-out infinite;
 }
 
 /* BENEFITS */
@@ -168,9 +236,9 @@ font-size:18px;
 text-align:center;
 }
 
-.play img{
-width:140px;
-margin-top:20px;
+.download p{
+opacity:.8;
+margin-bottom:30px;
 }
 
 /* FOOTER */
@@ -188,57 +256,128 @@ font-size:14px;
 
 <body>
 
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">MedTracker</div>
+
+<div class="nav-links">
+
+<a href="#features" data-en="Features" data-de="Funktionen">Features</a> <a href="#preview" data-en="Preview" data-de="Vorschau">Preview</a> <a href="#download" data-en="Download" data-de="Download">Download</a>
+
+<button class="lang-switch" onclick="switchLang()">DE / EN</button>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
 <section class="hero">
 
 <h1>MedTracker</h1>
 
-<p>Never miss a medication again.</p>
+<p data-en="Never miss a medication again." 
+   data-de="Verpasse nie wieder eine Medikamenteneinnahme.">
+Never miss a medication again.
+</p>
 
-<a class="button" href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">Download on Google Play</a>
+<a class="button"
+data-en="Download on Google Play"
+data-de="Jetzt im Play Store herunterladen"
+href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
+
+Download on Google Play
+
+</a>
 
 <div class="phone">
 
 <a href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
-<img src="img/app-icon.png" alt="MedTracker" class="app-icon">
+
+<img src="img/app-icon.png" alt="MedTracker">
+
 </a>
 
 </div>
 
 </section>
 
-<section class="container">
+<!-- FEATURES -->
 
-<h2 class="section-title">Powerful Features</h2>
+<section class="container" id="features">
+
+<h2 class="section-title"
+data-en="Powerful Features"
+data-de="Leistungsstarke Funktionen">
+
+Powerful Features
+
+</h2>
 
 <div class="features">
 
 <div class="card">
-<h3>Medication Tracking</h3>
-<p>Track your daily medications and keep a reliable intake history.</p>
+
+<h3 data-en="Medication Tracking" data-de="Medikamenten Tracking">
+Medication Tracking
+</h3>
+
+<p data-en="Track your daily medications and keep a reliable intake history."
+data-de="Dokumentiere deine täglichen Medikamente und behalte den Überblick über deine Einnahmen.">
+
+Track your daily medications.
+
+</p>
+
 </div>
 
 <div class="card">
-<h3>Calendar Overview</h3>
-<p>Instantly see which days you took your medication.</p>
+
+<h3 data-en="Calendar Overview" data-de="Kalender Übersicht">
+Calendar Overview
+</h3>
+
+<p data-en="Instantly see which days you took your medication."
+data-de="Sieh sofort, an welchen Tagen du deine Medikamente genommen hast.">
+
+Instantly see your progress.
+
+</p>
+
 </div>
 
 <div class="card">
-<h3>Simple Management</h3>
-<p>Add medications with dosage and intake time in seconds.</p>
-</div>
 
-<div class="card">
-<h3>Date Range Logging</h3>
-<p>Update multiple days with a single action.</p>
+<h3 data-en="Simple Management" data-de="Einfache Verwaltung">
+Simple Management
+</h3>
+
+<p data-en="Add medications with dosage and intake time in seconds."
+data-de="Füge Medikamente mit Dosierung und Uhrzeit in wenigen Sekunden hinzu.">
+
+Add medications quickly.
+
+</p>
+
 </div>
 
 </div>
 
 </section>
 
-<section class="container">
+<!-- PREVIEW -->
 
-<h2 class="section-title">App Preview</h2>
+<section class="container" id="preview">
+
+<h2 class="section-title"
+data-en="App Preview"
+data-de="App Vorschau">
+
+App Preview
+
+</h2>
 
 <div class="screens">
 
@@ -258,25 +397,63 @@ font-size:14px;
 
 </section>
 
+<!-- BENEFITS -->
+
 <section class="container benefits">
 
-<h2 class="section-title">Designed for Simplicity</h2>
+<h2 class="section-title"
+data-en="Designed for Simplicity"
+data-de="Für Einfachheit entwickelt">
 
-<p>
-MedTracker focuses on what matters most: helping you stay consistent with your medication.
-All data stays securely on your device.
+Designed for Simplicity
+
+</h2>
+
+<p
+data-en="MedTracker focuses on helping you stay consistent with your medication. All data stays securely on your device."
+data-de="MedTracker hilft dir dabei, deine Medikamente zuverlässig einzunehmen. Alle Daten bleiben sicher auf deinem Gerät.">
+
+MedTracker focuses on what matters most.
+
 </p>
 
 </section>
 
-<section class="container download">
+<!-- DOWNLOAD -->
 
-<h2 class="section-title">Start Tracking Today</h2>
+<section class="container download" id="download">
 
-<div class="play">
+<h2 class="section-title"
+data-en="Start Tracking Today"
+data-de="Jetzt starten">
+
+Start Tracking Today
+
+</h2>
+
+<p
+data-en="Download MedTracker and stay on top of your medication schedule."
+data-de="Lade MedTracker herunter und behalte deine Medikamenteneinnahme im Blick.">
+
+Download MedTracker.
+
+</p>
+
+<a class="button"
+data-en="Download on Google Play"
+data-de="Jetzt herunterladen"
+href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
+
+Download on Google Play
+
+</a>
+
+<div style="margin-top:50px;">
 
 <a href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
-<img src="img/appicon.png" alt="MedTracker">
+
+<img src="img/appicon.png" class="app-icon">
+
 </a>
 
 </div>
@@ -284,8 +461,48 @@ All data stays securely on your device.
 </section>
 
 <div class="footer">
+
 © 2026 MedTracker
+
 </div>
+
+<script>
+
+function switchLang(){
+
+document.querySelectorAll("[data-en]").forEach(el=>{
+
+if(el.innerText===el.dataset.en){
+
+el.innerText=el.dataset.de
+
+}else{
+
+el.innerText=el.dataset.en
+
+}
+
+})
+
+}
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show")
+
+}
+
+})
+
+})
+
+document.querySelectorAll(".card").forEach(el=>observer.observe(el))
+
+</script>
 
 </body>
 </html>
