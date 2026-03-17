@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MedTracker – Medication Tracker</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Inter",sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:140px 20px;
+background:radial-gradient(circle at top,#2563eb,#0f172a);
+}
+
+.hero h1{
+font-size:64px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+opacity:.8;
+margin-bottom:40px;
+}
+
+.button{
+display:inline-block;
+background:#22c55e;
+padding:18px 36px;
+border-radius:12px;
+text-decoration:none;
+color:white;
+font-weight:600;
+font-size:18px;
+transition:.3s;
+}
+
+.button:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+/* APP ICON */
+
+.app-icon{
+width:140px;
+border-radius:26px;
+transition:.3s;
+}
+
+.app-icon:hover{
+transform:scale(1.08);
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* PHONE MOCKUP */
+
+.phone{
+margin-top:80px;
+display:flex;
+justify-content:center;
+}
+
+.phone img{
+width:280px;
+border-radius:32px;
+box-shadow:0 40px 120px rgba(0,0,0,.6);
+animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0px)}
+}
+
+/* FEATURES */
+
+.section-title{
+text-align:center;
+font-size:36px;
+margin-bottom:60px;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:20px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+background:rgba(255,255,255,0.08);
+}
+
+/* SCREENSHOTS */
+
+.screens{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.screens img{
+width:240px;
+border-radius:24px;
+box-shadow:0 20px 60px rgba(0,0,0,.4);
+transition:.3s;
+}
+
+.screens img:hover{
+transform:scale(1.05);
+}
+
+/* BENEFITS */
+
+.benefits{
+text-align:center;
+}
+
+.benefits p{
+max-width:700px;
+margin:auto;
+opacity:.8;
+font-size:18px;
+}
+
+/* DOWNLOAD */
+
+.download{
+text-align:center;
+}
+
+.play img{
+width:140px;
+margin-top:20px;
+}
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+padding:40px;
+opacity:.6;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+
+<h1>MedTracker</h1>
+
+<p>Never miss a medication again.</p>
+
+<a class="button" href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">Download on Google Play</a>
+
+<div class="phone">
+
+<a href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
+<img src="app-icon.png" alt="MedTracker" class="app-icon">
+</a>
+
+</div>
+
+</section>
+
+<section class="container">
+
+<h2 class="section-title">Powerful Features</h2>
+
+<div class="features">
+
+<div class="card">
+<h3>Medication Tracking</h3>
+<p>Track your daily medications and keep a reliable intake history.</p>
+</div>
+
+<div class="card">
+<h3>Calendar Overview</h3>
+<p>Instantly see which days you took your medication.</p>
+</div>
+
+<div class="card">
+<h3>Simple Management</h3>
+<p>Add medications with dosage and intake time in seconds.</p>
+</div>
+
+<div class="card">
+<h3>Date Range Logging</h3>
+<p>Update multiple days with a single action.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="container">
+
+<h2 class="section-title">App Preview</h2>
+
+<div class="screens">
+
+<a href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
+<img src="screen1.png">
+</a>
+
+<a href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
+<img src="screen2.png">
+</a>
+
+<a href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
+<img src="screen3.png">
+</a>
+
+</div>
+
+</section>
+
+<section class="container benefits">
+
+<h2 class="section-title">Designed for Simplicity</h2>
+
+<p>
+MedTracker focuses on what matters most: helping you stay consistent with your medication.
+All data stays securely on your device.
+</p>
+
+</section>
+
+<section class="container download">
+
+<h2 class="section-title">Start Tracking Today</h2>
+
+<div class="play">
+
+<a href="https://play.google.com/store/apps/details?id=dev.flondy.medtracker">
+<img src="appicon.png" alt="MedTracker">
+</a>
+
+</div>
+
+</section>
+
+<div class="footer">
+© 2026 MedTracker
+</div>
+
+</body>
+</html>
